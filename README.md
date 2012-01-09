@@ -29,7 +29,35 @@ scp.send(options, function (err) {
 
 ###scp.send(options, cb)
 
+Send a file to a remote host (in your `~/.ssh/config`)
+
+You must pass in `options. A `cb` function is optional, and will be passed `err`, `stdout`, and `stderr`.
+
+There are currently 3 options:
+
+````javascript
+scp.send({
+  file: './file.txt', // local file to send
+  host: 'myServer',   // remote host to copy to, set up in your ~/.ssh/config
+  path: '~'           // remote path to save to (this would result in a ~/file.txt on myServer)
+});
+````
+
 ###scp.get(options, cb)
+
+Transfer a file from a remote host (in your `~/.ssh/config`) to the current computer.
+
+You must pass in `options. A `cb` function is optional, and will be passed `err`, `stdout`, and `stderr`.
+
+There are currently 3 options:
+
+````javascript
+scp.get({
+  file: '~/file.txt', // remote file to grab
+  host: 'myServer',   // remote host to transfer from, set up in your ~/.ssh/config
+  path: '~'           // local path to save to (this would result in a ~/file.txt on the local machine)
+});
+````
 
 ## license
 
