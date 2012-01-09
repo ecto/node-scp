@@ -21,6 +21,7 @@ scp.send = function (options, cb) {
 scp.get = function (options, cb) {
   var command = [
     'scp',
+    '-r',
     options.host + ':' + options.file,
     options.path
   ];
