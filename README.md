@@ -1,6 +1,6 @@
 # node-scp
 
-Transfer files with node.js
+SCP (secure file copy) wrapper for node.js
 
 ![scp](http://i.imgur.com/RrUKV.gif)
 
