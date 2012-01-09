@@ -31,7 +31,7 @@ scp.send(options, function (err) {
 
 Send a file to a remote host (in your `~/.ssh/config`)
 
-You must pass in `options. A `cb` function is optional, and will be passed `err`, `stdout`, and `stderr`.
+You must pass in `options`. A `cb` function is optional, and will be passed `err`, `stdout`, and `stderr`.
 
 There are currently 3 options:
 
@@ -47,7 +47,7 @@ scp.send({
 
 Transfer a file from a remote host (in your `~/.ssh/config`) to the current computer.
 
-You must pass in `options. A `cb` function is optional, and will be passed `err`, `stdout`, and `stderr`.
+You must pass in `options`. A `cb` function is optional, and will be passed `err`, `stdout`, and `stderr`.
 
 There are currently 3 options:
 
