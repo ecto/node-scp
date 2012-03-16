@@ -14,7 +14,7 @@ scp.send = function (options, cb) {
     'scp',
     '-r',
     options.file,
-    options.host + ':' + options.path,
+    (options.user == undefined ? '' : options.user+'@') + options.host + ':' + options.path,
   ];
   exec(command.join(' '), function (err, stdout, stderr) {
     if (cb) {
@@ -32,7 +32,7 @@ scp.get = function (options, cb) {
   var command = [
     'scp',
     '-r',
-    options.host + ':' + options.file,
+    (options.user == undefined ? '' : options.user+'@') + options.host + ':' + options.file,
     options.path
   ];
   exec(command.join(' '), function (err, stdout, stderr) {
