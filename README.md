@@ -15,6 +15,7 @@ var scp = require('scp');
 
 var options = {
   file: 'dump.sql'
+  user: 'username',
   host: 'myServer',
   path: '~'
 }
@@ -33,11 +34,12 @@ Send a file to a remote host (in your `~/.ssh/config`)
 
 You must pass in `options`. A `cb` function is optional, and will be passed `err`, `stdout`, and `stderr`.
 
-There are currently 3 options:
+There are currently 4 options:
 
 ````javascript
 scp.send({
   file: './file.txt', // local file to send
+  user: 'username',   // username to authenticate as on remote system
   host: 'myServer',   // remote host to copy to, set up in your ~/.ssh/config
   path: '~'           // remote path to save to (this would result in a ~/file.txt on myServer)
 });
@@ -54,6 +56,7 @@ There are currently 3 options:
 ````javascript
 scp.get({
   file: '~/file.txt', // remote file to grab
+  user: 'username',   // username to authenticate as on remote system
   host: 'myServer',   // remote host to transfer from, set up in your ~/.ssh/config
   path: '~'           // local path to save to (this would result in a ~/file.txt on the local machine)
 });
