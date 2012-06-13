@@ -14,7 +14,7 @@ scp.send = function (options, cb) {
     'scp',
     '-r',
     '-P',
-    (options.port == undefined ? '22' : options.port)
+    (options.port == undefined ? '22' : options.port),
     options.file,
     (options.user == undefined ? '' : options.user+'@') + options.host + ':' + options.path,
   ];
