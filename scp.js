@@ -19,6 +19,9 @@ scp.send = function (options, cb) {
   if (options.identityFile) {
     command.push('-i', options.identityFile);
   }
+  if (options.batchMode) {
+    command.push('-B');
+  }
   command.push( 
     options.file,
     (options.user == undefined ? '' : options.user+'@') + options.host + ':' + options.path
@@ -42,6 +45,9 @@ scp.get = function (options, cb) {
   ];
   if (options.identityFile) {
     command.push('-i', options.identityFile);
+  }
+  if (options.batchMode) {
+    command.push('-B');
   }
   command.push(  
     (options.user == undefined ? '' : options.user+'@') + options.host + ':' + options.file,
