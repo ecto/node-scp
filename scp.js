@@ -13,6 +13,8 @@ scp.send = function (options, cb) {
   var command = [
     'scp',
     '-r',
+    '-P',
+    (options.port == undefined ? '22' : options.port)
     options.file,
     (options.user == undefined ? '' : options.user+'@') + options.host + ':' + options.path,
   ];
