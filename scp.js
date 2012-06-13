@@ -14,10 +14,15 @@ scp.send = function (options, cb) {
     'scp',
     '-r',
     '-P',
-    (options.port == undefined ? '22' : options.port),
-    options.file,
-    (options.user == undefined ? '' : options.user+'@') + options.host + ':' + options.path,
+    (options.port == undefined ? '22' : options.port)
   ];
+  if (options.identityFile) {
+    command.push('-i', options.identityFile);
+  }
+  command.push( 
+    options.file,
+    (options.user == undefined ? '' : options.user+'@') + options.host + ':' + options.path
+  );
   exec(command.join(' '), function (err, stdout, stderr) {
     if (cb) {
       cb(err, stdout, stderr);
@@ -33,10 +38,15 @@ scp.send = function (options, cb) {
 scp.get = function (options, cb) {
   var command = [
     'scp',
-    '-r',
+    '-r'
+  ];
+  if (options.identityFile) {
+    command.push('-i', options.identityFile);
+  }
+  command.push(  
     (options.user == undefined ? '' : options.user+'@') + options.host + ':' + options.file,
     options.path
-  ];
+  );
   exec(command.join(' '), function (err, stdout, stderr) {
     if (cb) {
       cb(err, stdout, stderr);
