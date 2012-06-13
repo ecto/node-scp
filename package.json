@@ -1,11 +1,12 @@
 {
   "author": "Cam Pedersen <diffference@gmail.com> (http://campedersen.com/)",
   "contributors": [
-    "Gabriel Preston <gpreston@gmail.com> (http://www.morethanawesome.com/)"
+    "Gabriel Preston <gpreston@gmail.com> (http://www.morethanawesome.com/)",
+    "Alex Weidmann"
   ],
   "name": "scp",
   "description": "remote file copy wrapper",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "git://github.com/ecto/node-scp.git"
