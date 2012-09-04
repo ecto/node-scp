@@ -14,7 +14,7 @@ SCP (secure file copy) wrapper for node.js
 var scp = require('scp');
 
 var options = {
-  file: 'dump.sql'
+  file: 'dump.sql',
   user: 'username',
   host: 'myServer',
   port: '22',
