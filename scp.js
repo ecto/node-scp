@@ -35,7 +35,7 @@ scp.get = function (options, cb) {
     'scp',
     '-r',
     '-P',
-    (options.port == undefined) ? '22' : options.port),
+    (options.port == undefined ? '22' : options.port),
     (options.user == undefined ? '' : options.user+'@') + options.host + ':' + options.file,
     options.path
   ];
