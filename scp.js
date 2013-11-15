@@ -13,6 +13,8 @@ scp.send = function (options, cb) {
   var command = [
     'scp',
     '-r',
+    '-o UserKnownHostsFile=/dev/null',
+    '-o StrictHostKeyChecking=no',
     '-P',
     (options.port == undefined ? '22' : options.port),
     options.file,
@@ -34,6 +36,8 @@ scp.get = function (options, cb) {
   var command = [
     'scp',
     '-r',
+    '-o UserKnownHostsFile=/dev/null',
+    '-o StrictHostKeyChecking=no',
     '-P',
     (options.port == undefined ? '22' : options.port),
     (options.user == undefined ? '' : options.user+'@') + options.host + ':' + options.file,
