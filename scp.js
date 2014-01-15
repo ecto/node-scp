@@ -18,12 +18,13 @@ scp.send = function (options, cb) {
     options.file,
     (options.user == undefined 
       ? '' 
-      : options.user + (options.password == undefined 
+      : (options.user + (options.password == undefined 
         ? '' 
-        : ':\'' + options.password + '\'') + '@') + 
+        : ':\'' + options.password + '\'')) + 
       (options.host == undefined ? '' : options.host + ':') + 
-      options.path
+      options.path)
   ];
+  console.log(command)
   exec(command.join(' '), function (err, stdout, stderr) {
     if (cb) {
       cb(err, stdout, stderr);
