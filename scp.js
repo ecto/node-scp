@@ -16,7 +16,10 @@ scp.send = function (options, cb) {
     '-P',
     (options.port == undefined ? '22' : options.port),
     options.file,
-    (options.user == undefined ? '' : options.user+'@') + (options.host == undefined ? '' : options.host + ':') + options.path,
+    (options.user == undefined ? '' : options.user+'@') + 
+      (options.host == undefined ? '' : options.host + ':') + 
+      (options.password == undefined ? '' : '\'' + options.password + '\':') +
+      options.path
   ];
   exec(command.join(' '), function (err, stdout, stderr) {
     if (cb) {
@@ -36,8 +39,10 @@ scp.get = function (options, cb) {
     '-r',
     '-P',
     (options.port == undefined ? '22' : options.port),
-    (options.user == undefined ? '' : options.user+'@') + (options.host == undefined ? '' : options.host + ':') + options.file,
-    options.path
+    (options.user == undefined ? '' : options.user+'@') + 
+      (options.host == undefined ? '' : options.host + ':') + 
+      (options.password == undefined ? '' : '\'' + options.password + '\':') +
+      options.path
   ];
   exec(command.join(' '), function (err, stdout, stderr) {
     if (cb) {
