@@ -23,7 +23,7 @@ scp.send = function (options, cb) {
       (options.host == undefined ? '' : options.host + ':') + 
       options.path)
   ];
-  console.log(command)
+  
   var proc = spawn('scp', args);
   proc.on('close', function (code) {
     if(code != 0) {
