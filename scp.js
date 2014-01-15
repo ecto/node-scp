@@ -20,7 +20,7 @@ scp.send = function (options, cb) {
       ? '' 
       : options.user + (options.password == undefined 
         ? '' 
-        : '\'' + options.password + '\'') + '@') + 
+        : ':\'' + options.password + '\'') + '@') + 
       (options.host == undefined ? '' : options.host + ':') + 
       options.path
   ];
@@ -46,7 +46,7 @@ scp.get = function (options, cb) {
       ? '' 
       : options.user + (options.password == undefined 
         ? '' 
-        : '\'' + options.password + '\'') + '@') + 
+        : ':\'' + options.password + '\'') + '@') + 
       (options.host == undefined ? '' : options.host + ':') + options.file,
       options.path
   ];
