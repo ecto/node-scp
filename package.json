@@ -6,11 +6,12 @@
     "Ben Evans <ben@bensbit.co.uk>",
     "Gabriel Preston <gpreston@gmail.com>",
     "Joseph Silvestre <joseph.silvestre38@gmail.com>",
-    "appr <appr@appr.me>"
+    "appr <appr@appr.me>",
+    "Daniel Phatthanan <daniel@phatthanan.com>"
   ],
   "name": "scp",
   "description": "remote file copy wrapper",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "repository": {
     "type": "git",
     "url": "git://github.com/ecto/node-scp.git"
