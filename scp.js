@@ -15,6 +15,7 @@ scp.send = function (options, cb) {
     '-r',
     '-P',
     (options.port == undefined ? '22' : options.port),
+    '-o "ControlMaster no"', //callback is not fired if ssh sessions are shared
     options.file,
     (options.user == undefined ? '' : options.user+'@') + options.host + ':' + options.path,
   ];
@@ -36,6 +37,7 @@ scp.get = function (options, cb) {
     '-r',
     '-P',
     (options.port == undefined ? '22' : options.port),
+    '-o "ControlMaster no"', //callback is not fired if ssh sessions are shared
     (options.user == undefined ? '' : options.user+'@') + options.host + ':' + options.file,
     options.path
   ];
