@@ -47,6 +47,30 @@ scp.send({
 });
 ````
 
+You can also pass, `ssh options`, the ones which should be passed to scp through `-o` command line option 
+
+The code 
+
+````javascript
+scp.send({
+  file        : './file.txt',
+  user        : 'username',
+  host        : 'myServer',
+  port        : 22,
+  path        : '~',
+  ssh_options : {
+    ControlMaster         : 'no',
+    StrictHostKeyChecking : 'yes'
+  }
+````
+
+is equivalent to following command line
+
+````
+scp -o ControlMaster=no -o StrictHostKeyChecking=yes -P 22 username@myServer:~/file.txt ~
+````
+
+
 ###scp.get(options, cb)
 
 Transfer a file from a remote host (in your `~/.ssh/config`) to the current computer.
@@ -63,6 +87,28 @@ scp.get({
   port: '22',         // remote port, optional, defaults to '22'
   path: '~'           // local path to save to (this would result in a ~/file.txt on the local machine)
 });
+````
+
+You can also pass, `ssh options`, the ones which should be passed to scp through `-o` command line option.
+
+The code 
+
+````javascript
+scp.get({
+  file        : '~/file.txt',
+  user        : 'username',
+  host        : 'myServer',
+  port        : 22,
+  path        : '~',
+  ssh_options : {
+    ControlMaster         : 'no',
+    StrictHostKeyChecking : 'yes'
+  }
+````
+is equivalent to following command line
+
+````
+scp -o ControlMaster=no -o StrictHostKeyChecking=yes -P 22 username@myServer:~/file.txt ~
 ````
 
 ## license
