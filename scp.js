@@ -10,15 +10,25 @@ var scp = module.exports = {};
  * Transfer a file to a remote host
  */
 scp.send = function (options, cb) {
-  var command = [
-    'scp',
-    '-r',
-    '-P',
-    (options.port == undefined ? '22' : options.port),
-    '-o "ControlMaster no"', //callback is not fired if ssh sessions are shared
+  var command = baseCommand(options).concat([
     options.file,
-    (options.user == undefined ? '' : options.user+'@') + options.host + ':' + options.path,
-  ];
+    (options.user == undefined ? '' : options.user+'@') + options.host + ':' + options.path
+  ]);
+  run(command, cb);
+}
+
+/*
+ * Grab a file from a remote host
+ */
+scp.get = function (options, cb) {
+  var command = baseCommand(options).concat([
+    (options.user == undefined ? '' : options.user+'@') + options.host + ':' + options.file,
+    options.path
+  ]);
+  run(command, cb);
+}
+
+function run(command, cb) {
   exec(command.join(' '), function (err, stdout, stderr) {
     if (cb) {
       cb(err, stdout, stderr);
@@ -28,24 +38,12 @@ scp.send = function (options, cb) {
   });
 }
 
-/*
- * Grab a file from a remote host
- */
-scp.get = function (options, cb) {
-  var command = [
+function baseCommand(options) {
+  return [
     'scp',
     '-r',
     '-P',
     (options.port == undefined ? '22' : options.port),
-    '-o "ControlMaster no"', //callback is not fired if ssh sessions are shared
-    (options.user == undefined ? '' : options.user+'@') + options.host + ':' + options.file,
-    options.path
+    '-o "ControlMaster no"' //callback is not fired if ssh sessions are shared
   ];
-  exec(command.join(' '), function (err, stdout, stderr) {
-    if (cb) {
-      cb(err, stdout, stderr);
-    } else {
-      if (err) throw new Error(err);
-    }
-  });
 }
