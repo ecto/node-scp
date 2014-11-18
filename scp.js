@@ -39,11 +39,15 @@ function run(command, cb) {
 }
 
 function baseCommand(options) {
-  return [
+  var cmd = [
     'scp',
     '-r',
     '-P',
     (options.port == undefined ? '22' : options.port),
     '-o "ControlMaster no"' //callback is not fired if ssh sessions are shared
   ];
+  if (options.key) {
+    cmd = cmd.concat(['-i', options.key]);
+  }
+  return cmd;
 }
