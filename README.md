@@ -18,6 +18,7 @@ var options = {
   user: 'username',
   host: 'myServer',
   port: '22',
+  identity_file: '~/.ssh/MyKeyFlie.pem',
   path: '~'
 }
 
