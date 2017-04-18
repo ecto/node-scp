@@ -4,11 +4,11 @@ SCP (secure file copy) wrapper for node.js
 
 ![scp](http://i.imgur.com/RrUKV.gif)
 
-##install
+## install
 
     npm install scp
 
-##usage
+## usage
 
 ````javascript
 var scp = require('scp');
@@ -27,9 +27,9 @@ scp.send(options, function (err) {
 });
 ````
 
-##methods
+## methods
 
-###scp.send(options, cb)
+### scp.send(options, cb)
 
 Send a file to a remote host (in your `~/.ssh/config`)
 
@@ -47,7 +47,7 @@ scp.send({
 });
 ````
 
-###scp.get(options, cb)
+### scp.get(options, cb)
 
 Transfer a file from a remote host (in your `~/.ssh/config`) to the current computer.
 
