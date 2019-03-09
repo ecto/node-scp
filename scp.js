@@ -6,6 +6,17 @@ var exec = require('child_process').exec;
 
 var scp = module.exports = {};
 
+function buildSshOptions(options) {
+  var result = '';
+  var defaults = {
+    ControlMaster: 'no'
+  };
+  var sshOptions = Object.assign({}, defaults, options.sshOptions);
+  Object.keys(sshOptions).map(function (key) {
+    result += "-o " + key + '=' + sshOptions[key] + ' ';
+  });
+  return result.trim();
+}
 /*
  * Transfer a file to a remote host
  */
@@ -15,7 +26,7 @@ scp.send = function (options, cb) {
     '-r',
     '-P',
     (options.port == undefined ? '22' : options.port),
-    '-o "ControlMaster no"', //callback is not fired if ssh sessions are shared
+    buildSshOptions(options),
     options.file,
     (options.user == undefined ? '' : options.user+'@') + options.host + ':' + options.path,
   ];
@@ -37,7 +48,7 @@ scp.get = function (options, cb) {
     '-r',
     '-P',
     (options.port == undefined ? '22' : options.port),
-    '-o "ControlMaster no"', //callback is not fired if ssh sessions are shared
+    buildSshOptions(options),
     (options.user == undefined ? '' : options.user+'@') + options.host + ':' + options.file,
     options.path
   ];
