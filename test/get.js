@@ -4,7 +4,7 @@ scp.get({
   file: '~/test',
   host: 'core',
   path: './test/what',
-  ssh_options:  {
+  sshOptions:  {
     StrictHostKeyChecking: 'no'
   }
 }, function () {

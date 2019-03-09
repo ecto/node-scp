@@ -4,11 +4,11 @@ SCP (secure file copy) wrapper for node.js
 
 ![scp](http://i.imgur.com/RrUKV.gif)
 
-##install
+## install
 
     npm install scp
 
-##usage
+## usage
 
 ````javascript
 var scp = require('scp');
@@ -19,11 +19,11 @@ var options = {
   host: 'myServer',
   port: '22',
   path: '~',
-  ssh_options: {
-     StrictHostKeyChecking: "no",
-     UserKnownHostsFile: "/dev/null"
+  sshOptions: {
+    StrictHostKeyChecking: "no",
+    UserKnownHostsFile: "/dev/null"
   }
-}
+};
 
 scp.send(options, function (err) {
   if (err) console.log(err);
@@ -31,9 +31,9 @@ scp.send(options, function (err) {
 });
 ````
 
-##methods
+## methods
 
-###scp.send(options, cb)
+### scp.send(options, cb)
 
 Send a file to a remote host (in your `~/.ssh/config`)
 
@@ -48,14 +48,14 @@ scp.send({
   host: 'myServer',   // remote host to copy to, set up in your ~/.ssh/config
   port: '22',         // remote port, optional, defaults to '22'
   path: '~',           // remote path to save to (this would result in a ~/file.txt on myServer)
-  ssh_options: {
-     StrictHostKeyChecking: "no",
-     UserKnownHostsFile: "/dev/null"
+  sshOptions: {
+    StrictHostKeyChecking: "no",
+    UserKnownHostsFile: "/dev/null"
   }  // additional ssh options
 });
 ````
 
-###scp.get(options, cb)
+### scp.get(options, cb)
 
 Transfer a file from a remote host (in your `~/.ssh/config`) to the current computer.
 
@@ -70,8 +70,8 @@ scp.get({
   host: 'myServer',   // remote host to transfer from, set up in your ~/.ssh/config
   port: '22',         // remote port, optional, defaults to '22'
   path: '~',           // local path to save to (this would result in a ~/file.txt on the local machine)
-  ssh_options: {
-       StrictHostKeyChecking: "no"
+  sshOptions: {
+    StrictHostKeyChecking: "no"
   }
 });
 ````
