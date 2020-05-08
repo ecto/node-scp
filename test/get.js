@@ -1,7 +1,7 @@
 var scp = require('../');
 
 scp.get({
-  file: '~/test',
+  file: '~/what',
   host: 'core',
   path: './test/what'
 }, function () {
